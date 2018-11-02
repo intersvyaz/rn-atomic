@@ -1,0 +1,33 @@
+{
+    "name": "rn-atomic",
+    "version": "1.0.0-alfa1",
+    "description": "React Native Intersvyaz UI library",
+    "main": "./src/index.js",
+    "scripts": {
+    },
+    "keywords": [
+        "react-native",
+        "design",
+        "ui",
+        "intersvyaz"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/intersvyaz/rn-atomic"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/intersvyaz/rn-atomic/issues"
+    },
+    "homepage": "https://github.com/intersvyaz/rn-atomic",
+    "peerDependencies": {
+        
+    },
+    "dependencies": {
+        "prop-types": "15.6.1"
+    },
+    "devDependencies": {
+        "react": "16.4.1",
+        "react-native": "0.55.3"
+    }
+}
