@@ -1,8 +1,8 @@
-import {StyleSheet} from 'react-native';
-import {COLORS} from './Base';
+import { StyleSheet } from 'react-native';
+import { COLORS } from './Base';
 
 export const ListviewTextStyles = StyleSheet.create({
-  title:{
+  title: {
     color: COLORS.MAIN_GRAY,
     fontSize: 16,
     fontWeight: '700'
@@ -15,28 +15,31 @@ export const ListviewTextStyles = StyleSheet.create({
 });
 
 export const ListViewRowStyles = StyleSheet.create({
-  base:{
-    paddingLeft:16,
-    paddingRight:16,
+  base: {
+    paddingLeft: 16,
+    paddingRight: 16,
     paddingTop: 16,
     paddingBottom: 16
   },
   oneLineWithCustonIcon: {
     paddingTop: 8,
     paddingBottom: 8,
-    paddingRight:16,
-    paddingLeft:16
+    paddingRight: 16,
+    paddingLeft: 16
   },
-  largeLeftIcon:{
+  largeLeftIcon: {
     ppaddingTop: 8,
     paddingBottom: 8,
-    paddingRight:16,
-    paddingLeft:0
+    paddingRight: 16,
+    paddingLeft: 0
   },
-  largeLeftIconThreeLines:{
+  largeLeftIconThreeLines: {
     paddingTop: 16,
     paddingBottom: 16,
-    paddingRight:16,
-    paddingLeft:0
+    paddingRight: 16,
+    paddingLeft: 0
+  },
+  leftIconViewStyle: {
+    marginRight: 16
   }
 });

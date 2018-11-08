@@ -1,16 +1,22 @@
 import React from 'react';
+import { View } from 'react-native';
 import SimpleText from '../../00atoms/SimpleText';
-import {COLORS} from '../../styles/Base';
-import {ListviewTextStyles} from '../../styles/ListView';
+import { ListviewTextStyles } from '../../styles/ListView';
 
-export default class Title extends React.Component{
+export default class Title extends React.Component {
   render() {
-    <SimpleText 
-    style={ListviewTextStyles.title} 
-    numberOfLines={1} 
-    allowFontScaling={false}
-    >
-      {this.props.title}
-    </SimpleText>
+    if (!this.props.title) {
+      return (<View />);
+    } else {
+      return (
+        <SimpleText
+          style={ListviewTextStyles.title}
+          numberOfLines={1}
+          allowFontScaling={false}
+        >
+          {this.props.title}
+        </SimpleText>
+      );
+    }
   }
 }
