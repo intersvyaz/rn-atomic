@@ -25,7 +25,7 @@ export default class ListView extends React.Component {
     }
   };
 
-  renderSeparator() {
+	renderSeparator = () =>{
     if (this.props.renderSeparator) {
       return this.props.renderSeparator();
     } else {
