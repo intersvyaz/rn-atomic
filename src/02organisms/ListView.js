@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {FlatList} from 'react-native';
 import SimpleSeparator from '../00atoms/SimpleSeparator';
 import ListRowItem from '../01molecules/ListRowItem';
+import {ListViewStyles} from '../styles/ListView';
 
 export default class ListView extends React.Component {
   static propTytpes = {
@@ -36,7 +37,7 @@ export default class ListView extends React.Component {
   render() {
     return(
       <FlatList 
-        contentContainerStyle={{flex:1}}
+        contentContainerStyle={ListViewStyles.base}
         renderItem={this.renderItem}
         ItemSeparatorComponent={this.renderSeparator}
       {...this.props}
