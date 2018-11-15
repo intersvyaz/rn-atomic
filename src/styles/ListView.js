@@ -86,6 +86,14 @@ export const ListViewRowStyles = StyleSheet.create({
 	},
 	leftIconViewStyle: {
 		marginRight: 16
+	}, 
+	iconViewStyle:{
+		height: 40,
+		width:40
+	},
+	largeLeftIconViewStyle:{
+		height:56,
+		width:100
 	}
 });
 

@@ -63,7 +63,7 @@ export default class ListRowItem extends React.Component{
 		if (this.props.renderLeftIcon) {
 			let icon = this.props.renderLeftIcon(this.props);
 			return (
-				<View style={ListViewRowStyles.leftIconViewStyle}>
+				<View style={[ListViewRowStyles.leftIconViewStyle, this.props.largeLeftIcon ? ListViewRowStyles.largeLeftIconViewStyle : ListViewRowStyles.iconViewStyle]}>
 					{icon}
 				</View>
 			)
