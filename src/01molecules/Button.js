@@ -17,7 +17,7 @@ export default class Button extends React.Component {
   static porpTtypes = {
     title: PropTypes.string,
     style: PropTypes.object,
-    type: PropTypes.string.oneOf(BUTTON_TYPES_ARRAY),
+    type: PropTypes.oneOf(BUTTON_TYPES_ARRAY),
     enable: PropTypes.bool,
     renderIcon: PropTypes.func,
     renderTitle: PropTypes.func,
