@@ -49,7 +49,7 @@ export default class Button extends React.Component {
     if (this.props.renderIcon && this.props.type !== BUTTON_TYPES.TEXT){
       let icon = this.props.renderIcon();
       return (
-        <View style={{height:18, width: 18, marginLeft: 8}}>
+        <View style={{height:18, width: 18, marginRight: 8, justifyContent:'center', alignItems:'center'}}>
           {icon}
         </View>
       );
@@ -67,8 +67,8 @@ export default class Button extends React.Component {
   };
 
   getButtonStyle = () => {
-    let styleName = this.getStyleName;
-    if (this.props.renderIcon || this.props.type !== BUTTON_TYPES.TEXT) {
+    let styleName = this.getStyleName();
+    if (this.props.renderIcon && this.props.type !== BUTTON_TYPES.TEXT) {
       return Object.assign({}, ButtonStyles[styleName], ButtonStyles.withIcon);
     } else {
       return ButtonStyles[styleName];
@@ -76,7 +76,7 @@ export default class Button extends React.Component {
   };
 
   getTitleStyle = () => {
-    let styleName = this.getStyleName;
+    let styleName = this.getStyleName();
     return ButtonTextStyles[styleName];
   };
 
@@ -102,7 +102,7 @@ export default class Button extends React.Component {
 
     return (
       <TouchableOpacity
-        activeOpacity={!this.props.enable? 0 : 1}
+        activeOpacity={this.props.enable? 0 : 1}
         onPress={this.handleOnPress}
       >
       <View style={[ButtonStyles.base, style]}>

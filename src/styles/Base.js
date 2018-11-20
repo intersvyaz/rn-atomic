@@ -38,12 +38,15 @@ export const ButtonStyles = StyleSheet.create({
     minWidth: 64,
     paddingLeft: 16,
     paddingRight: 16,
-    borderRadius: 1
+    borderRadius: 1,
+    flexDirection:'row',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   withIcon:{
     paddingLeft:12
   },
-  disbled:{
+  disabled:{
     backgroundColor: COLORS.MAIN_GRAY
   },
   blue:{
@@ -68,8 +71,8 @@ export const ButtonStyles = StyleSheet.create({
 });
 
 export const ButtonTextStyles = StyleSheet.create({
-  disbled:{
-    color: COLORS.MAIN_GRAY
+  disabled:{
+    color: COLORS.WHITE
   },
   blue:{
     color:COLORS.WHITE
