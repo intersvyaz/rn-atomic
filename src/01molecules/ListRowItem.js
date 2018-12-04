@@ -92,6 +92,7 @@ export default class ListRowItem extends React.Component{
 	};
 
 	getChevrone = () => {
+		if (!this.props.showRightChevrone && !this.props.renderChevrone) {return <View/>}
 		if (this.props.renderChevrone) {
 			return this.props.renderChevrone(this.props);
 		} else {
