@@ -5,7 +5,8 @@ export const COLORS = {
   MAIN_GRAY: "#555",
   SECOND_GRAY: "#838383",
   WHITE: '#fff',
-  ORANGE: '#e96f08'
+  ORANGE: '#e96f08',
+  RED: '#ff6b54',
 };
 
 export const TextStyles = StyleSheet.create({
@@ -34,14 +35,18 @@ export const SeparatorStyles = StyleSheet.create({
 
 export const ButtonStyles = StyleSheet.create({
   base:{
-    height:36,
-    minWidth: 64,
-    paddingLeft: 16,
-    paddingRight: 16,
-    borderRadius: 1,
-    flexDirection:'row',
-    justifyContent: 'center',
-    alignItems: 'center'
+    height: 36,
+    minWidth: 88,
+    marginLeft: 8,
+    marginRight: 8,
+    marginBottom: 12,
+    marginTop: 12,
+    paddingLeft: 14,
+    paddingRight: 14,
+    paddingTop: 10,
+    paddingBottom: 10,
+    borderWidth: 2,
+    borderRadius: 24,
   },
   withIcon:{
     paddingLeft:12
@@ -67,6 +72,14 @@ export const ButtonStyles = StyleSheet.create({
     paddingLeft: 8,
     paddingRight: 8
   },
+  red: {
+    backgroundColor: COLORS.WHITE,
+    borderColor: COLORS.RED
+  },
+  redPressed: {
+    backgroundColor: COLORS.RED,
+    borderColor: COLORS.RED
+  },
   textDisabled:{}
 });
 
@@ -91,5 +104,15 @@ export const ButtonTextStyles = StyleSheet.create({
   },
   testDisabled:{
     color: COLORS.MAIN_GRAY
-  }
+  },
+  red: {
+    color: COLORS.RED,
+    fontWeight: "bold",
+    fontSize: 10,
+  },
+  redPressed: {
+    color: COLORS.WHITE,
+    fontWeight: "bold",
+    fontSize: 10,
+  },
 });
