@@ -15,7 +15,8 @@ export const BUTTON_TYPES = {
 const BUTTON_TYPES_ARRAY = Object.values(BUTTON_TYPES);
 
 export default class Button extends React.Component {
-  static propTtypes = {
+  static propTypes = {
+    accessibilityLabel: PropTypes.string,
     title: PropTypes.string,
     style: PropTypes.object,
     type: PropTypes.oneOf(BUTTON_TYPES_ARRAY),
@@ -148,7 +149,7 @@ export default class Button extends React.Component {
         ]}
         underlayColor={underlayColor}
       >
-          <View>
+          <View accessibilityLabel={this.props.accessibilityLabel}>
               {icon}
               {title}
           </View>
