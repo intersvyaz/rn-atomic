@@ -1,4 +1,5 @@
 import {StyleSheet, Platform} from 'react-native';
+import {moderateScale} from './Scaling';
 
 export const COLORS = {
   DEFAULT_BLUE : "#264796",
@@ -35,18 +36,14 @@ export const SeparatorStyles = StyleSheet.create({
 
 export const ButtonStyles = StyleSheet.create({
   base:{
-    height: 36,
+    minHeight: 36,
     minWidth: 88,
-    marginLeft: 8,
-    marginRight: 8,
-    marginBottom: 12,
-    marginTop: 12,
-    paddingLeft: 14,
-    paddingRight: 14,
-    paddingTop: 10,
-    paddingBottom: 10,
-    borderWidth: 2,
-    borderRadius: 24,
+    paddingLeft: moderateScale(14, 0.4),
+    paddingRight: moderateScale(14, 0.4),
+    paddingTop: moderateScale(10),
+    paddingBottom: moderateScale(10),
+    borderWidth: moderateScale(2),
+    borderRadius: moderateScale(24),
   },
   withIcon:{
     paddingLeft:12
@@ -108,11 +105,11 @@ export const ButtonTextStyles = StyleSheet.create({
   red: {
     color: COLORS.RED,
     fontWeight: "bold",
-    fontSize: 10,
+    fontSize: moderateScale(12),
   },
   redPressed: {
     color: COLORS.WHITE,
     fontWeight: "bold",
-    fontSize: 10,
+    fontSize: moderateScale(12),
   },
 });

@@ -18,7 +18,7 @@ export default class Button extends React.Component {
   static propTypes = {
     accessibilityLabel: PropTypes.string,
     title: PropTypes.string,
-    style: PropTypes.object,
+    style: PropTypes.style,
     type: PropTypes.oneOf(BUTTON_TYPES_ARRAY),
     enable: PropTypes.bool,
     renderIcon: PropTypes.func,
@@ -113,9 +113,9 @@ export default class Button extends React.Component {
     let styleName = 'base';
     if (!this.props.enable) {
       switch (this.props.type) {
-      case BUTTON_TYPES.TEXT: styleName = 'textDisabled';
-      case BUTTON_TYPES.WHITE: styleName = 'whiteDisabled';
-      default: styleName = 'disabled';
+        case BUTTON_TYPES.TEXT: styleName = 'textDisabled';
+        case BUTTON_TYPES.WHITE: styleName = 'whiteDisabled';
+        default: styleName = 'disabled';
       }
     } else {
       styleName = this.props.type;
@@ -143,16 +143,17 @@ export default class Button extends React.Component {
         }}
         style={[
           ButtonStyles.base,
+          this.props.style,
           this.state.pressedButton
             ? style
             : pressedStyle
         ]}
         underlayColor={underlayColor}
       >
-          <View accessibilityLabel={this.props.accessibilityLabel}>
-              {icon}
-              {title}
-          </View>
+        <View accessibilityLabel={this.props.accessibilityLabel}>
+          {icon}
+          {title}
+        </View>
       </TouchableHighlight>
     );
   }
