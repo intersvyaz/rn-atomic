@@ -1,5 +1,5 @@
 import {StyleSheet, Platform} from 'react-native';
-import {moderateScale} from './Scaling';
+import {scale, moderateScale} from './Scaling';
 
 export const COLORS = {
   DEFAULT_BLUE : "#264796",
@@ -8,11 +8,38 @@ export const COLORS = {
   WHITE: '#fff',
   ORANGE: '#e96f08',
   RED: '#ff6b54',
+  BALANCE_CIRCLE: '#365eac',
+  BLACK: '#000',
 };
 
 export const TextStyles = StyleSheet.create({
   defaultText:{
     fontFamily: Platform.OS === "ios" ? "Avenir" : "sans-serif"
+  },
+  moneyText: {
+    flexDirection: "row",
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end'
+  },
+  moneyRubles: {
+    fontFamily: "Arial",
+    color: COLORS.WHITE,
+    fontSize: moderateScale(24),
+    fontWeight: "bold",
+  },
+  moneyCents: {
+    fontFamily: "Arial",
+    color: COLORS.WHITE,
+    fontSize: moderateScale(14),
+    marginLeft: scale(3),
+    marginBottom: scale(3),
+    marginRight: scale(6),
+    fontWeight: "bold",
+  },
+  moneyIcon: {
+    color: COLORS.WHITE,
+    marginBottom: scale(3),
+    fontSize: moderateScale(24)
   }
 });
 
@@ -111,5 +138,33 @@ export const ButtonTextStyles = StyleSheet.create({
     color: COLORS.WHITE,
     fontWeight: "bold",
     fontSize: moderateScale(12),
+  },
+});
+
+export const CircleStyles = StyleSheet.create({
+  balanceText: {
+    textAlign: "center",
+    fontSize: moderateScale(12),
+    color: "white",
+    marginBottom: scale(4),
+    marginTop: scale(4)
+  },
+  balanceCircle: {
+    borderColor: COLORS.BALANCE_CIRCLE,
+    backgroundColor: COLORS.BALANCE_CIRCLE,
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    ...Platform.select({
+      ios: {
+        shadowColor: COLORS.BLACK,
+        shadowOffset: { width: 0, height: scale(8) },
+        shadowOpacity: scale(0.42),
+        shadowRadius: scale(12),
+      },
+      android: {
+        elevation: 3,
+      },
+    }),
   },
 });

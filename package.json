@@ -23,15 +23,16 @@
     "homepage": "https://github.com/intersvyaz/rn-atomic",
     "peerDependencies": {},
     "dependencies": {
-        "prop-types": "15.6.1"
+        "prop-types": "15.6.1",
+        "react-native-elements": "^1.1.0"
     },
     "devDependencies": {
-        "react": "16.4.1",
-        "react-native": "0.55.3",
+        "babel-eslint": "^7.1.1",
         "eslint": "^3.17.1",
         "eslint-plugin-react": "^6.10.0",
         "eslint-plugin-react-native": "^2.3.1",
-        "babel-eslint": "^7.1.1",
+        "react": "16.4.1",
+        "react-native": "0.55.3",
         "react-native-vector-icons": "4.6.0"
     }
 }
