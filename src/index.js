@@ -4,6 +4,7 @@ import ListView from './02organisms/ListView';
 import SimpleSeparator from './00atoms/SimpleSeparator';
 import Button, {BUTTON_TYPES} from './01molecules/Button';
 import BalanceStatus from './01molecules/BalanceStatus';
+import NetworkStatus from './01molecules/NetworkStatus';
 
 export {
     COLORS,
@@ -13,4 +14,5 @@ export {
     Button,
     BUTTON_TYPES,
     BalanceStatus,
+    NetworkStatus,
 };

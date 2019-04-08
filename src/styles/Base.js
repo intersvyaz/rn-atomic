@@ -2,7 +2,7 @@ import {StyleSheet, Platform} from 'react-native';
 import {scale, moderateScale} from './Scaling';
 
 export const COLORS = {
-  DEFAULT_BLUE : "#264796",
+  DEFAULT_BLUE: "#264796",
   MAIN_GRAY: "#555",
   SECOND_GRAY: "#838383",
   WHITE: '#fff',
@@ -13,8 +13,15 @@ export const COLORS = {
 };
 
 export const TextStyles = StyleSheet.create({
-  defaultText:{
+  defaultText: {
     fontFamily: Platform.OS === "ios" ? "Avenir" : "sans-serif"
+  },
+  balanceText: {
+    textAlign: "center",
+    fontSize: moderateScale(12),
+    color: "white",
+    marginBottom: scale(4),
+    marginTop: scale(4)
   },
   moneyText: {
     flexDirection: "row",
@@ -40,14 +47,32 @@ export const TextStyles = StyleSheet.create({
     color: COLORS.WHITE,
     marginBottom: scale(3),
     fontSize: moderateScale(24)
-  }
+  },
+  networkTitle: {
+    color: COLORS.WHITE,
+    fontSize: moderateScale(8),
+    paddingBottom: scale(4),
+  },
+  networkIcon: {
+    height: scale(24),
+    width: scale(24),
+    color: COLORS.WHITE,
+    marginBottom: scale(4),
+    marginTop: scale(12)
+  },
+  networkStatus: {
+    marginHorizontal: scale(12),
+    backgroundColor: "transparent",
+    fontSize: moderateScale(12),
+    textAlign: "center"
+  },
 });
 
 export const SeparatorStyles = StyleSheet.create({
-  base:{
+  base: {
     flex: 1,
     borderBottomColor: COLORS.SECOND_GRAY,
-    borderBottomWidth:1
+    borderBottomWidth: 1
   },
   simmetricRowPadding: {
     marginRight: 16,
@@ -62,7 +87,7 @@ export const SeparatorStyles = StyleSheet.create({
 });
 
 export const ButtonStyles = StyleSheet.create({
-  base:{
+  base: {
     minHeight: 36,
     minWidth: 88,
     paddingLeft: moderateScale(14, 0.4),
@@ -72,27 +97,27 @@ export const ButtonStyles = StyleSheet.create({
     borderWidth: moderateScale(2),
     borderRadius: moderateScale(24),
   },
-  withIcon:{
-    paddingLeft:12
+  withIcon: {
+    paddingLeft: 12
   },
-  disabled:{
+  disabled: {
     backgroundColor: COLORS.MAIN_GRAY
   },
-  blue:{
+  blue: {
     backgroundColor: COLORS.DEFAULT_BLUE
   },
   orange: {
     backgroundColor: COLORS.ORANGE
   },
-  white:{
+  white: {
     borderWidth: 1,
     borderColor: COLORS.ORANGE
   },
-  whiteDisabled:{
+  whiteDisabled: {
     borderWidth: 1,
     borderColor: COLORS.MAIN_GRAY
   },
-  text:{
+  text: {
     paddingLeft: 8,
     paddingRight: 8
   },
@@ -104,29 +129,29 @@ export const ButtonStyles = StyleSheet.create({
     backgroundColor: COLORS.RED,
     borderColor: COLORS.RED
   },
-  textDisabled:{}
+  textDisabled: {}
 });
 
 export const ButtonTextStyles = StyleSheet.create({
-  disabled:{
+  disabled: {
     color: COLORS.WHITE
   },
-  blue:{
-    color:COLORS.WHITE
+  blue: {
+    color: COLORS.WHITE
   },
   orange: {
-    color:COLORS.WHITE
+    color: COLORS.WHITE
   },
-  white:{
+  white: {
     color: COLORS.ORANGE
   },
-  whiteDisabled:{
+  whiteDisabled: {
     color: COLORS.MAIN_GRAY
   },
-  text:{
+  text: {
     color: COLORS.DEFAULT_BLUE
   },
-  testDisabled:{
+  testDisabled: {
     color: COLORS.MAIN_GRAY
   },
   red: {
@@ -142,13 +167,6 @@ export const ButtonTextStyles = StyleSheet.create({
 });
 
 export const CircleStyles = StyleSheet.create({
-  balanceText: {
-    textAlign: "center",
-    fontSize: moderateScale(12),
-    color: "white",
-    marginBottom: scale(4),
-    marginTop: scale(4)
-  },
   balanceCircle: {
     borderColor: COLORS.BALANCE_CIRCLE,
     backgroundColor: COLORS.BALANCE_CIRCLE,
@@ -158,9 +176,22 @@ export const CircleStyles = StyleSheet.create({
     ...Platform.select({
       ios: {
         shadowColor: COLORS.BLACK,
-        shadowOffset: { width: 0, height: scale(8) },
+        shadowOffset: {width: 0, height: scale(8)},
         shadowOpacity: scale(0.42),
         shadowRadius: scale(12),
+      },
+      android: {
+        elevation: 3,
+      },
+    }),
+  },
+  networkCircle: {
+    ...Platform.select({
+      ios: {
+        shadowColor: COLORS.BLACK,
+        shadowOffset: {width: 0, height: scale(5)},
+        shadowOpacity: scale(0.23),
+        shadowRadius: scale(3),
       },
       android: {
         elevation: 3,

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Text, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
-import {CircleStyles} from '../styles/Base';
+import {CircleStyles, TextStyles} from '../styles/Base';
 import MoneyText from '../00atoms/MoneyText';
 
 export default class BalanceStatus extends React.Component {
@@ -37,7 +37,7 @@ export default class BalanceStatus extends React.Component {
         >
             <Text
               allowFontScaling={false}
-              style={CircleStyles.balanceText}
+              style={TextStyles.balanceText}
             >
                 {this.props.balanceTitle.toUpperCase()}
             </Text>
