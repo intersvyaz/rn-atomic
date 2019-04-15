@@ -1,15 +1,16 @@
 import React from 'react';
-import {TouchableHighlight, View} from 'react-native';
+import {TouchableOpacity, View} from 'react-native';
 import PropTypes from 'prop-types';
 import SimpleText from '../00atoms/SimpleText';
-import {ButtonStyles, ButtonTextStyles, COLORS} from '../styles/Base';
+import {ButtonStyles, ButtonTextStyles} from '../styles/Base';
 
 export const BUTTON_TYPES = {
   BLUE: 'blue',
   ORANGE: 'orange',
   WHITE: 'white',
   RED: 'red',
-  TEXT: 'text'
+  TEXT: 'text',
+  RED_PRIMARY: 'redPrimary'
 };
 
 const BUTTON_TYPES_ARRAY = Object.values(BUTTON_TYPES);
@@ -24,19 +25,13 @@ export default class Button extends React.Component {
     renderIcon: PropTypes.func,
     renderTitle: PropTypes.func,
     onPress: PropTypes.func
-  }
+  };
+
   static defaultProps = {
     enable: true,
     onPress: () => {},
     type: BUTTON_TYPES.ORANGE
-  }
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      pressedButton: false,
-    };
-  }
+  };
 
   renderTitle = () => {
     if (this.props.renderTitle) {
@@ -67,12 +62,6 @@ export default class Button extends React.Component {
     }
   };
 
-  getUnderlayColor = () => {
-    let styleName = this.getStyleName();
-
-    return COLORS[styleName.toUpperCase()];
-  };
-
   handleOnPress = () => {
     if (!this.props.enable) {
       return false;
@@ -90,21 +79,8 @@ export default class Button extends React.Component {
     }
   };
 
-  getPressedButtonStyle = () => {
-    let styleName = this.getStyleName();
-    if (this.state.pressedButton) {
-      styleName += "Pressed";
-    }
-
-    return ButtonStyles[styleName];
-  };
-
   getTitleStyle = () => {
     let styleName = this.getStyleName();
-
-    if (this.state.pressedButton) {
-      styleName += "Pressed";
-    }
 
     return ButtonTextStyles[styleName];
   };
@@ -128,33 +104,18 @@ export default class Button extends React.Component {
     let title = this.renderTitle();
     let icon = this.renderIcon();
     let style = this.getButtonStyle();
-    let pressedStyle = this.getPressedButtonStyle();
-    let underlayColor = this.getUnderlayColor();
 
     return (
-      <TouchableHighlight
-        activeOpacity={1}
-        onHideUnderlay={() => {
-          this.setState({ pressedButton: false });
-        }}
+      <TouchableOpacity
+        activeOpacity={0.5}
         onPress={this.handleOnPress}
-        onShowUnderlay={() => {
-          this.setState({ pressedButton: true });
-        }}
-        style={[
-          ButtonStyles.base,
-          this.props.style,
-          this.state.pressedButton
-            ? style
-            : pressedStyle
-        ]}
-        underlayColor={underlayColor}
+        style={[ButtonStyles.base, this.props.style, style]}
       >
         <View accessibilityLabel={this.props.accessibilityLabel}>
           {icon}
           {title}
         </View>
-      </TouchableHighlight>
+      </TouchableOpacity>
     );
   }
 }

@@ -8,6 +8,7 @@ export const COLORS = {
   WHITE: '#fff',
   ORANGE: '#e96f08',
   RED: '#ff6b54',
+  RED_PRIMARY: '#ff6b54',
   BALANCE_CIRCLE: '#365eac',
   BLACK: '#000',
 };
@@ -125,7 +126,7 @@ export const ButtonStyles = StyleSheet.create({
     backgroundColor: COLORS.WHITE,
     borderColor: COLORS.RED
   },
-  redPressed: {
+  redPrimary: {
     backgroundColor: COLORS.RED,
     borderColor: COLORS.RED
   },
@@ -159,7 +160,7 @@ export const ButtonTextStyles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: moderateScale(12),
   },
-  redPressed: {
+  redPrimary: {
     color: COLORS.WHITE,
     fontWeight: "bold",
     fontSize: moderateScale(12),
