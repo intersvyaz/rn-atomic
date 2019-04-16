@@ -99,8 +99,8 @@ export const ListViewRowStyles = StyleSheet.create({
 
 export const ListViewStyles = StyleSheet.create({
 	base:{
-		flex: 1,
-		paddingTop: 8,
-		paddingBottom: 8
+		flexGrow: 1,
+		marginTop: 8,
+		marginBottom: 8
 	}
 });
