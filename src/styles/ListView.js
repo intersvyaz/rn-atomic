@@ -101,6 +101,6 @@ export const ListViewStyles = StyleSheet.create({
 	base:{
 		flexGrow: 1,
 		marginTop: 8,
-		marginBottom: 8
+		paddingBottom: 8
 	}
 });
