@@ -60,7 +60,6 @@ export default class NetworkStatus extends React.Component{
   }
 
   componentDidMount() {
-    console.log("bool", Boolean(this.props.serviceStatus));
     if (this.props.serviceStatus) {
       this.setState({
         status: this.props.serviceStatus.status,
@@ -70,16 +69,13 @@ export default class NetworkStatus extends React.Component{
   }
 
   render () {
-    console.log("serviceStatusProps", this.props.serviceStatus);
     let status = this.state.status;
     let title = this.state.title;
     if (this.props.serviceStatus !== null) {
       status = this.props.serviceStatus.status;
       title = this.props.serviceStatus.title;
-      console.log("this.props.serviceStatus.title", this.props.serviceStatus.title);
     }
 
-    console.log("serviceStatusTitle", title);
     let obj = NetworkStatusObject.default;
 
     for (let key in NetworkStatusObject) {
