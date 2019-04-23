@@ -3,8 +3,7 @@ import ListRowItem from './01molecules/ListRowItem';
 import ListView from './02organisms/ListView';
 import SimpleSeparator from './00atoms/SimpleSeparator';
 import Button, {BUTTON_TYPES} from './01molecules/Button';
-import BalanceStatus from './01molecules/BalanceStatus';
-import NetworkStatus from './01molecules/NetworkStatus';
+import PairCircles from './02organisms/PairCircles';
 
 export {
     COLORS,
@@ -13,6 +12,5 @@ export {
     SimpleSeparator,
     Button,
     BUTTON_TYPES,
-    BalanceStatus,
-    NetworkStatus,
+    PairCircles,
 };

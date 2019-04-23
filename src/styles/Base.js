@@ -9,8 +9,17 @@ export const COLORS = {
   ORANGE: '#e96f08',
   RED: '#ff6b54',
   RED_PRIMARY: '#ff6b54',
-  BALANCE_CIRCLE: '#365eac',
   BLACK: '#000',
+};
+
+export const CIRCLE_COLOR = {
+  NETWORK_RED: "#ff8875",
+  NETWORK_YELLOW: "#ffb575",
+  NETWORK_GREEN: "#85c2b2",
+  NETWORK_TEXT_BLUE: "#365eac",
+  DETAIL_WHITE: "#FFF",
+  DETAIL_BLUE: "#4063B4",
+  BALANCE_BLUE: '#365eac',
 };
 
 export const TextStyles = StyleSheet.create({
@@ -19,7 +28,7 @@ export const TextStyles = StyleSheet.create({
   },
   balanceText: {
     textAlign: "center",
-    fontSize: moderateScale(12),
+    fontSize: scale(14),
     color: "white",
     marginBottom: scale(4),
     marginTop: scale(4)
@@ -51,21 +60,23 @@ export const TextStyles = StyleSheet.create({
   },
   networkTitle: {
     color: COLORS.WHITE,
-    fontSize: moderateScale(8),
-    paddingBottom: scale(4),
+    fontSize: scale(10),
+    paddingBottom: scale(8),
   },
   networkIcon: {
-    height: scale(24),
-    width: scale(24),
     color: COLORS.WHITE,
-    marginBottom: scale(4),
-    marginTop: scale(12)
+    marginBottom: scale(2),
+    marginTop: scale(10)
   },
   networkStatus: {
-    marginHorizontal: scale(12),
+    marginHorizontal: scale(4),
     backgroundColor: "transparent",
-    fontSize: moderateScale(12),
     textAlign: "center"
+  },
+  detailTitle: {
+    color: CIRCLE_COLOR.DETAIL_BLUE,
+    fontWeight: "700",
+    fontSize: moderateScale(10)
   },
 });
 
@@ -168,9 +179,17 @@ export const ButtonTextStyles = StyleSheet.create({
 });
 
 export const CircleStyles = StyleSheet.create({
+  balanceContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "flex-end",
+    paddingTop: scale(5),
+    paddingBottom: scale(15),
+    backgroundColor: "transparent"
+  },
   balanceCircle: {
-    borderColor: COLORS.BALANCE_CIRCLE,
-    backgroundColor: COLORS.BALANCE_CIRCLE,
+    borderColor: CIRCLE_COLOR.BALANCE_BLUE,
+    backgroundColor: CIRCLE_COLOR.BALANCE_BLUE,
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
@@ -199,4 +218,22 @@ export const CircleStyles = StyleSheet.create({
       },
     }),
   },
+  detailStyle: {
+    flex: 1,
+    zIndex: 10,
+    alignItems: "flex-end",
+    bottom: scale(-13),
+    flexDirection: "column",
+    justifyContent: "flex-end",
+    position: "absolute"
+  },
+  detailCircle: {
+    backgroundColor: "white",
+    marginRight: 0,
+    marginLeft: 0,
+    borderColor: CIRCLE_COLOR.DETAIL_BLUE,
+    borderWidth: scale(1.5),
+    alignItems: "center",
+    justifyContent: "center"
+  }
 });

@@ -3,13 +3,12 @@ import {Text, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
 import {CircleStyles, TextStyles} from '../styles/Base';
 import MoneyText from '../00atoms/MoneyText';
+import {moderateScale, baseWidth, getCircleDiagonal} from "../styles/Scaling";
 
-export default class BalanceStatus extends React.Component {
+export default class BalanceCircle extends React.Component {
   static propTypes = {
-    style: PropTypes.object,
     balanceTitle: PropTypes.string,
     disabled: PropTypes.boolean,
-    circleStyle: PropTypes.object,
     moneySumm: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.number
@@ -26,13 +25,14 @@ export default class BalanceStatus extends React.Component {
   };
 
   render () {
+    let diagonal = baseWidth * moderateScale(0.4);
     return (
         <TouchableOpacity
           disabled={this.props.disabled}
           onPress={() => this.handleOnPressCircle()}
           style={[
             CircleStyles.balanceCircle,
-            this.props.circleStyle
+            getCircleDiagonal(diagonal)
           ]}
         >
             <Text
