@@ -94,7 +94,7 @@ export default class NetworkCircle extends React.Component {
     if (word.length > 10) {
       return 10;
     } else {
-      return 17;
+      return 14;
     }
   };
 
