@@ -200,9 +200,7 @@ export const CircleStyles = StyleSheet.create({
         shadowOpacity: scale(0.42),
         shadowRadius: scale(12),
       },
-      android: {
-        elevation: 3,
-      },
+      android: {},
     }),
   },
   networkCircle: {
@@ -213,9 +211,7 @@ export const CircleStyles = StyleSheet.create({
         shadowOpacity: scale(0.23),
         shadowRadius: scale(3),
       },
-      android: {
-        elevation: 3,
-      },
+      android: {},
     }),
   },
   detailStyle: {
