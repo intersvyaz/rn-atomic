@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import PropTypes from 'prop-types';
 import {CircleStyles, TextStyles, CIRCLE_COLOR} from '../styles/Base';
-import {moderateScale, scale, baseWidth, getCircleDiagonal} from "../styles/Scaling";
+import {moderateScale, scale, baseRadius, getCircleDiagonal} from "../styles/Scaling";
 import {Icon} from "react-native-elements";
 
 export default class DetailCircle extends React.Component {
@@ -17,7 +17,7 @@ export default class DetailCircle extends React.Component {
   };
 
   render() {
-    let diagonal = baseWidth * moderateScale(0.4);
+    let diagonal = baseRadius * moderateScale(0.4);
     let detalizationDiagonal = diagonal / 3;
     if (this.props.visible) {
       return (

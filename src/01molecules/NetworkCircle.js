@@ -3,7 +3,7 @@ import {Text, View, TouchableOpacity, Alert} from 'react-native';
 import PropTypes from 'prop-types';
 import {CircleStyles, TextStyles, COLORS, CIRCLE_COLOR} from '../styles/Base';
 import {Icon} from "react-native-elements";
-import {moderateScale, scale, baseWidth, getCircleDiagonal} from "../styles/Scaling";
+import {moderateScale, scale, baseRadius, getCircleDiagonal} from "../styles/Scaling";
 
 const NetworkStatusObject = {
   ok: {
@@ -92,9 +92,9 @@ export default class NetworkCircle extends React.Component {
 
   getFontSizeStatus = word => {
     if (word.length > 10) {
-      return 10;
+      return 9;
     } else {
-      return 14;
+      return 13;
     }
   };
 
@@ -136,7 +136,7 @@ export default class NetworkCircle extends React.Component {
         );
     }
 
-    let diagonal = baseWidth * moderateScale(1.2) / moderateScale(4);
+    let diagonal = baseRadius * moderateScale(0.3);
     return (
       <TouchableOpacity onPress={this.handleOpenModal}>
         <View style={{alignItems: "flex-start"}}>

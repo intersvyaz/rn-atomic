@@ -3,7 +3,7 @@ import {Text, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
 import {CircleStyles, TextStyles} from '../styles/Base';
 import MoneyText from '../00atoms/MoneyText';
-import {moderateScale, baseWidth, getCircleDiagonal} from "../styles/Scaling";
+import {moderateScale, baseRadius, getCircleDiagonal} from "../styles/Scaling";
 
 export default class BalanceCircle extends React.Component {
   static propTypes = {
@@ -24,8 +24,8 @@ export default class BalanceCircle extends React.Component {
     }
   };
 
-  render () {
-    let diagonal = baseWidth * moderateScale(0.4);
+  render() {
+    let diagonal = baseRadius * moderateScale(0.4);
     return (
         <TouchableOpacity
           disabled={this.props.disabled}
