@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Text, View, TouchableOpacity, Alert} from 'react-native';
+import {Text, View, TouchableOpacity, Alert, Platform} from 'react-native';
 import PropTypes from 'prop-types';
 import {CircleStyles, TextStyles, COLORS, CIRCLE_COLOR} from '../styles/Base';
 import {Icon} from "react-native-elements";
@@ -100,7 +100,7 @@ export default class NetworkCircle extends React.Component {
 
   render() {
     let status = this.state.status,
-      title = this.state.title;
+        title = this.state.title;
     if (this.props.serviceStatus !== null) {
       status = this.props.serviceStatus.status;
       title = this.props.serviceStatus.title;
@@ -131,25 +131,34 @@ export default class NetworkCircle extends React.Component {
             }
           ]}
         >
-            {secondWords}
+          {secondWords}
         </Text>
-        );
+      );
     }
 
     let diagonal = baseRadius * moderateScale(0.3);
     return (
-      <TouchableOpacity onPress={this.handleOpenModal}>
-        <View style={{alignItems: "flex-start"}}>
+      <View>
+        {Platform.OS === 'android' &&
+        <View style={CircleStyles.shadowContainer}>
           <View
-            style={[
-              getCircleDiagonal(diagonal),
-              CircleStyles.networkCircle,
-              {
-                backgroundColor: obj.backgroundColor,
-                alignItems: "center"
-              },
-            ]}
-          >
+              style={[getCircleDiagonal(diagonal), CircleStyles.circleShadow, {
+                zIndex: -15
+              }]}
+          />
+        </View>
+        }
+        <TouchableOpacity
+          style={[
+            getCircleDiagonal(diagonal),
+            CircleStyles.networkCircle,
+            {
+              backgroundColor: obj.backgroundColor,
+              zIndex: -10
+            },
+          ]}
+            onPress={this.handleOpenModal}>
+          <View style={{alignItems: "center"}}>
             <Icon
               iconStyle={TextStyles.networkIcon}
               color="white"
@@ -161,7 +170,7 @@ export default class NetworkCircle extends React.Component {
               allowFontScaling={false}
               style={TextStyles.networkTitle}
             >
-                {this.props.title.toUpperCase()}
+              {this.props.title.toUpperCase()}
             </Text>
             <View style={{
               justifyContent: "center",
@@ -178,13 +187,13 @@ export default class NetworkCircle extends React.Component {
                   }
                 ]}
               >
-                  {firstWord === "" ? " " : firstWord.toUpperCase()}
+                {firstWord === "" ? " " : firstWord.toUpperCase()}
               </Text>
               {otherWords}
             </View>
           </View>
-        </View>
-      </TouchableOpacity>
+        </TouchableOpacity>
+      </View>
     );
   }
 }

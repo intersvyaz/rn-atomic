@@ -231,5 +231,13 @@ export const CircleStyles = StyleSheet.create({
     borderWidth: scale(1.5),
     alignItems: "center",
     justifyContent: "center"
+  },
+  shadowContainer: {
+    marginTop: 7,
+    marginLeft: 7,
+    position: "absolute",
+  },
+  circleShadow: {
+    backgroundColor: ['rgba(0,0,0,0.05)', 'transparent'],
   }
 });

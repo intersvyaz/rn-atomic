@@ -43,7 +43,7 @@ export default class PairCircles extends React.Component {
                       visible={this.props.detailVisible}
                     />
                 </View>
-                <View style={{flex: 1, zIndex: -10}}>
+                <View style={{flex: 1}}>
                     <NetworkCircle
                       getStatus={this.props.getNetworkStatus}
                       isRefreshingChild={this.props.isRefreshingChild}

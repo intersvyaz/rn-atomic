@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Text, TouchableOpacity} from 'react-native';
+import {Text, TouchableOpacity, View, Platform} from 'react-native';
 import PropTypes from 'prop-types';
 import {CircleStyles, TextStyles} from '../styles/Base';
 import MoneyText from '../00atoms/MoneyText';
@@ -27,6 +27,14 @@ export default class BalanceCircle extends React.Component {
   render() {
     let diagonal = baseRadius * moderateScale(0.4);
     return (
+      <View>
+        {Platform.OS === 'android' &&
+        <View style={CircleStyles.shadowContainer}>
+          <View
+            style={[getCircleDiagonal(diagonal), CircleStyles.circleShadow]}
+          />
+        </View>
+        }
         <TouchableOpacity
           disabled={this.props.disabled}
           onPress={() => this.handleOnPressCircle()}
@@ -35,16 +43,17 @@ export default class BalanceCircle extends React.Component {
             getCircleDiagonal(diagonal)
           ]}
         >
-            <Text
-              allowFontScaling={false}
-              style={TextStyles.balanceText}
-            >
-                {this.props.balanceTitle.toUpperCase()}
-            </Text>
-            <MoneyText
-              moneySumm={this.props.moneySumm}
-            />
+          <Text
+            allowFontScaling={false}
+            style={TextStyles.balanceText}
+          >
+            {this.props.balanceTitle.toUpperCase()}
+          </Text>
+          <MoneyText
+            moneySumm={this.props.moneySumm}
+          />
         </TouchableOpacity>
+      </View>
     );
   }
 }
