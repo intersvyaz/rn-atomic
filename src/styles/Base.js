@@ -196,9 +196,9 @@ export const CircleStyles = StyleSheet.create({
     ...Platform.select({
       ios: {
         shadowColor: COLORS.BLACK,
-        shadowOffset: {width: 0, height: scale(8)},
-        shadowOpacity: scale(0.42),
-        shadowRadius: scale(12),
+        shadowOffset: {width: 0, height: 8},
+        shadowOpacity: 0.42,
+        shadowRadius: 12,
       },
       android: {},
     }),
@@ -207,9 +207,17 @@ export const CircleStyles = StyleSheet.create({
     ...Platform.select({
       ios: {
         shadowColor: COLORS.BLACK,
-        shadowOffset: {width: 0, height: scale(5)},
-        shadowOpacity: scale(0.23),
-        shadowRadius: scale(3),
+        shadowOffset: {width: 0, height: 5},
+        shadowOpacity: 0.23,
+        shadowRadius: 3,
+      },
+      android: {},
+    }),
+  },
+  networkPosition: {
+    ...Platform.select({
+      ios: {
+        zIndex: -10,
       },
       android: {},
     }),

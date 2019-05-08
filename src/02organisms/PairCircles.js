@@ -26,33 +26,33 @@ export default class PairCircles extends React.Component {
 
   render () {
     return (
-        <View style={{flex:1, justifyContent: "center", alignItems: "center"}}>
-            <View style={[CircleStyles.balanceContainer]}>
-                <View style={[{flex: 1}]}>
-                    <View style={[{alignItems: "flex-end"}]}>
-                        <BalanceCircle
-                          balanceTitle={this.props.balanceTitle}
-                          disabled={this.props.balanceDisabled}
-                          moneySumm={this.props.moneySumm}
-                          onPress={this.props.balanceCirclePress}
-                        />
-                    </View>
-                    <DetailCircle
-                      showDetailScreen={this.props.showDetailScreen}
-                      title={this.props.detailTitle}
-                      visible={this.props.detailVisible}
-                    />
-                </View>
-                <View style={{flex: 1}}>
-                    <NetworkCircle
-                      getStatus={this.props.getNetworkStatus}
-                      isRefreshingChild={this.props.isRefreshingChild}
-                      serviceStatus={this.props.serviceStatus}
-                      title={this.props.networkTitle}
-                    />
-                </View>
+      <View style={{flex:1, justifyContent: "center", alignItems: "center"}}>
+        <View style={[CircleStyles.balanceContainer]}>
+          <View style={[{flex: 1}]}>
+            <View style={[{alignItems: "flex-end"}]}>
+              <BalanceCircle
+                balanceTitle={this.props.balanceTitle}
+                disabled={this.props.balanceDisabled}
+                moneySumm={this.props.moneySumm}
+                onPress={this.props.balanceCirclePress}
+              />
             </View>
+            <DetailCircle
+              showDetailScreen={this.props.showDetailScreen}
+              title={this.props.detailTitle}
+              visible={this.props.detailVisible}
+            />
+          </View>
+          <View style={[CircleStyles.networkPosition, {flex: 1}]}>
+            <NetworkCircle
+              getStatus={this.props.getNetworkStatus}
+              isRefreshingChild={this.props.isRefreshingChild}
+              serviceStatus={this.props.serviceStatus}
+              title={this.props.networkTitle}
+            />
+          </View>
         </View>
+      </View>
     );
   }
 }
