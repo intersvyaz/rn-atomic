@@ -241,8 +241,8 @@ export const CircleStyles = StyleSheet.create({
     justifyContent: "center"
   },
   shadowContainer: {
-    marginTop: 7,
-    marginLeft: 7,
+    marginTop: scale(6),
+    marginLeft: scale(6),
     position: "absolute",
   },
   circleShadow: {
