@@ -3,6 +3,8 @@ import {scale, moderateScale} from './Scaling';
 
 export const COLORS = {
   DEFAULT_BLUE: "#264796",
+  DEFAULT_BLUE_LIGHT: "#b0c2df",
+  DEFAULT_BLUE_LIGHT_BACKGROUND: "#e1ebfc",
   MAIN_GRAY: "#555",
   SECOND_GRAY: "#838383",
   WHITE: '#fff',
