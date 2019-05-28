@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { COLORS } from './Base';
+import { COLORS, PARKING_COLOR } from './Base';
 
 export const ListviewTextStyles = StyleSheet.create({
 	title: {
@@ -94,6 +94,96 @@ export const ListViewRowStyles = StyleSheet.create({
 	largeLeftIconViewStyle:{
 		height:56,
 		width:100
+	}
+});
+
+export const ListItemParkingStyles = StyleSheet.create({
+	main: {
+		flex:1,
+		backgroundColor: COLORS.WHITE,
+	},
+	container: {
+		alignItems: "center",
+		paddingHorizontal: 16,
+		paddingVertical: 8,
+		flexDirection:'row',
+		flex:1,
+		backgroundColor: COLORS.WHITE
+	},
+	bubble: {
+		width: 44,
+		height: 44,
+		backgroundColor: PARKING_COLOR.BUBBLE_BACKGROUND,
+		borderRadius: 44/2,
+		alignItems: "center",
+		justifyContent: "center",
+		marginRight:16
+	},
+	bubbleHighlight: {
+		width: 44,
+		height: 44,
+		backgroundColor: PARKING_COLOR.BUBBLE_BACKGROUND_HIGHLIGHT,
+		borderRadius: 44/2,
+		alignItems: "center",
+		justifyContent: "center",
+		marginRight:16
+	},
+	distance: {
+		minWidth: 54,
+		backgroundColor: PARKING_COLOR.DEFAULT_BLUE_LIGHT_BACKGROUND,
+		borderRadius: 4,
+		alignItems: "center",
+		justifyContent: "center",
+		marginLeft: 8,
+		paddingVertical: 2,
+		paddingHorizontal:8
+	},
+	distanceHighlight: {
+		minWidth: 54,
+		backgroundColor: PARKING_COLOR.DEFAULT_BLUE_BACKGROUND,
+		borderRadius: 4,
+		alignItems: "center",
+		justifyContent: "center",
+		marginLeft: 8,
+		paddingVertical: 2,
+		paddingHorizontal: 8
+	},
+	distanceText: {
+		color: PARKING_COLOR.DEFAULT_BLUE_TEXT,
+		fontSize: 14,
+		fontWeight: '400',
+	},
+	distanceTextHighlight: {
+		color: COLORS.WHITE,
+		fontSize: 14,
+		fontWeight: '500',
+	},
+	bubbleText:{
+		color: COLORS.WHITE,
+		fontSize: 22,
+	},
+	bubbleTextHighlight:{
+		color: COLORS.RED,
+		fontSize: 22,
+	}
+});
+
+export const ListQuickActions = StyleSheet.create({
+	swipeableAction: {
+		flex: 1,
+		flexDirection: 'column',
+		alignItems: 'center',
+		justifyContent: 'center',
+		alignSelf: 'flex-end',
+		height: '100%',
+		borderRadius: 4,
+		margin: 8,
+		marginRight:20
+	},
+	textAction: {
+		textAlign: 'center',
+		fontSize: 14,
+		paddingHorizontal: 8
 	}
 });
 

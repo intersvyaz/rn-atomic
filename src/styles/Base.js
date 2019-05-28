@@ -2,7 +2,8 @@ import {StyleSheet, Platform} from 'react-native';
 import {scale, moderateScale} from './Scaling';
 
 export const COLORS = {
-  DEFAULT_BLUE: "#264796",
+  DEFAULT_BLUE: "#4063B4",
+  DEFAULT_BLUE_TEXT: '#697d9e',
   DEFAULT_BLUE_LIGHT: "#b0c2df",
   DEFAULT_BLUE_LIGHT_BACKGROUND: "#e1ebfc",
   MAIN_GRAY: "#555",
@@ -12,6 +13,15 @@ export const COLORS = {
   RED: '#ff6b54',
   RED_PRIMARY: '#ff6b54',
   BLACK: '#000',
+};
+
+export const PARKING_COLOR = {
+  DEFAULT_BLUE_TEXT: '#697d9e',
+  DEFAULT_BLUE_LIGHT: "#b0c2df",
+  DEFAULT_BLUE_LIGHT_BACKGROUND: "#e1ebfc",
+  DEFAULT_BLUE_BACKGROUND: "#607eb5",
+  BUBBLE_BACKGROUND: "#84a5e3",
+  BUBBLE_BACKGROUND_HIGHLIGHT: "#365eac",
 };
 
 export const CIRCLE_COLOR = {
@@ -148,35 +158,44 @@ export const ButtonStyles = StyleSheet.create({
 
 export const ButtonTextStyles = StyleSheet.create({
   disabled: {
-    color: COLORS.WHITE
+    color: COLORS.WHITE,
+    textAlign: 'center'
   },
   blue: {
-    color: COLORS.WHITE
+    color: COLORS.WHITE,
+    textAlign: 'center'
   },
   orange: {
-    color: COLORS.WHITE
+    color: COLORS.WHITE,
+    textAlign: 'center'
   },
   white: {
-    color: COLORS.ORANGE
+    color: COLORS.ORANGE,
+    textAlign: 'center'
   },
   whiteDisabled: {
-    color: COLORS.MAIN_GRAY
+    color: COLORS.MAIN_GRAY,
+    textAlign: 'center'
   },
   text: {
-    color: COLORS.DEFAULT_BLUE
+    color: COLORS.DEFAULT_BLUE,
+    textAlign: 'center'
   },
   testDisabled: {
-    color: COLORS.MAIN_GRAY
+    color: COLORS.MAIN_GRAY,
+    textAlign: 'center'
   },
   red: {
     color: COLORS.RED,
     fontWeight: "bold",
     fontSize: moderateScale(12),
+    textAlign: 'center'
   },
   redPrimary: {
     color: COLORS.WHITE,
     fontWeight: "bold",
     fontSize: moderateScale(12),
+    textAlign: 'center'
   },
 });
 
