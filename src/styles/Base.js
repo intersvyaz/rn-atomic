@@ -72,16 +72,16 @@ export const TextStyles = StyleSheet.create({
   },
   networkTitle: {
     color: COLORS.WHITE,
-    fontSize: scale(10),
-    paddingBottom: scale(8),
+    fontSize: scale(9),
+    paddingBottom: 4,
   },
   networkIcon: {
     color: COLORS.WHITE,
     marginBottom: scale(2),
-    marginTop: scale(10)
+    marginTop: scale(8)
   },
   networkStatus: {
-    marginHorizontal: scale(4),
+    marginHorizontal: scale(6),
     backgroundColor: "transparent",
     textAlign: "center"
   },

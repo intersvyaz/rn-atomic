@@ -90,17 +90,19 @@ export default class NetworkCircle extends React.Component {
     }
   };
 
-  getFontSizeStatus = word => {
-    if (word.length > 10) {
-      return 9;
-    } else {
-      return 13;
-    }
+  /**
+   * Размер шрифта в зависимости от максимальной длины слова в предложении иначе не влезет
+   * @param title
+   * @returns {number}
+   */
+  getFontSizeStatus = title => {
+    let longestWord = title.split(' ').sort((a, b) => { return b.length - a.length; });
+    return longestWord[0].length > 10 ? 9 : 13;
   };
 
   render() {
     let status = this.state.status,
-        title = this.state.title;
+      title = this.state.title;
     if (this.props.serviceStatus !== null) {
       status = this.props.serviceStatus.status;
       title = this.props.serviceStatus.title;
@@ -114,29 +116,10 @@ export default class NetworkCircle extends React.Component {
       }
     }
 
-    let firstWord = title;
-    let otherWords = <View/>;
-    if (title.length > 11) {
-      firstWord = title.split(" ")[0];
-      let secondWords = title.slice(firstWord.length + 1);
-      otherWords = (
-        <Text
-          allowFontScaling={false}
-          ellipsizeMode={"tail"}
-          numberOfLines={1}
-          style={[TextStyles.networkStatus,
-            {
-              color: obj.fontColor,
-              fontSize: scale(this.getFontSizeStatus(secondWords))
-            }
-          ]}
-        >
-          {secondWords}
-        </Text>
-      );
-    }
-
-    let diagonal = baseRadius * moderateScale(0.3);
+    let firstWord = title.split(" ")[0],
+      secondWords = title.slice(firstWord.length + 1),
+      fontSize = this.getFontSizeStatus(title),
+      diagonal = baseRadius * moderateScale(0.3);
     return (
       <View>
         {Platform.OS === 'android' &&
@@ -158,7 +141,7 @@ export default class NetworkCircle extends React.Component {
             },
           ]}
             onPress={this.handleOpenModal}>
-          <View style={{alignItems: "center"}}>
+          <View style={{alignItems: "center", flex: 1}}>
             <Icon
               iconStyle={TextStyles.networkIcon}
               color="white"
@@ -174,7 +157,9 @@ export default class NetworkCircle extends React.Component {
             </Text>
             <View style={{
               justifyContent: "center",
-              alignItems: "center"
+              alignItems: "center",
+              flex: 1,
+              paddingBottom: scale(20)
             }}>
               <Text
                 allowFontScaling={false}
@@ -183,13 +168,25 @@ export default class NetworkCircle extends React.Component {
                 style={[TextStyles.networkStatus,
                   {
                     color: obj.fontColor,
-                    fontSize: scale(this.getFontSizeStatus(firstWord))
+                    fontSize: scale(fontSize)
                   }
                 ]}
               >
                 {firstWord === "" ? " " : firstWord.toUpperCase()}
               </Text>
-              {otherWords}
+              <Text
+                allowFontScaling={false}
+                ellipsizeMode={"tail"}
+                numberOfLines={1}
+                style={[TextStyles.networkStatus,
+                  {
+                    color: obj.fontColor,
+                    fontSize: scale(fontSize)
+                  }
+                ]}
+              >
+                {secondWords === "" ? " " : secondWords.toUpperCase()}
+              </Text>
             </View>
           </View>
         </TouchableOpacity>
