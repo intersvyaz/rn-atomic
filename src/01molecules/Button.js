@@ -19,7 +19,7 @@ export default class Button extends React.Component {
   static propTypes = {
     accessibilityLabel: PropTypes.string,
     title: PropTypes.string,
-    style: PropTypes.style,
+    style: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
     type: PropTypes.oneOf(BUTTON_TYPES_ARRAY),
     enable: PropTypes.bool,
     renderIcon: PropTypes.func,

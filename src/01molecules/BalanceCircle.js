@@ -8,7 +8,7 @@ import {moderateScale, baseRadius, getCircleDiagonal} from "../styles/Scaling";
 export default class BalanceCircle extends React.Component {
   static propTypes = {
     balanceTitle: PropTypes.string,
-    disabled: PropTypes.boolean,
+    disabled: PropTypes.bool,
     moneySumm: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.number
