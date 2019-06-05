@@ -146,7 +146,7 @@ export const ButtonStyles = StyleSheet.create({
     paddingRight: 8
   },
   red: {
-    backgroundColor: COLORS.WHITE,
+    backgroundColor: 'transparent',
     borderColor: COLORS.RED
   },
   redPrimary: {
