@@ -4,7 +4,8 @@
     "description": "React Native Intersvyaz UI library",
     "main": "./src/index.js",
     "scripts": {
-        "lint": "eslint src/"
+        "lint": "eslint src/",
+        "reinstall": "rm -rf node_modules; rm -rf $TMPDIR/react-*; yarn cache clean; yarn install"
     },
     "keywords": [
         "react-native",
@@ -32,7 +33,7 @@
         "eslint-plugin-react": "^6.10.0",
         "eslint-plugin-react-native": "^2.3.1",
         "react": "16.4.1",
-        "react-native": "0.55.3",
+        "react-native": "0.56.0",
         "react-native-vector-icons": "4.6.0"
     }
 }
