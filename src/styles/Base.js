@@ -13,6 +13,7 @@ export const COLORS = {
   RED: '#ff6b54',
   RED_PRIMARY: '#ff6b54',
   BLACK: '#000',
+  BLUE: "#365eac"
 };
 
 export const PARKING_COLOR = {
@@ -28,7 +29,6 @@ export const CIRCLE_COLOR = {
   NETWORK_RED: "#ff8875",
   NETWORK_YELLOW: "#ffb575",
   NETWORK_GREEN: "#85c2b2",
-  NETWORK_TEXT_BLUE: "#365eac",
   DETAIL_WHITE: "#FFF",
   DETAIL_BLUE: "#4063B4",
   BALANCE_BLUE: '#365eac',
@@ -73,7 +73,6 @@ export const TextStyles = StyleSheet.create({
   networkTitle: {
     color: COLORS.WHITE,
     fontSize: scale(9),
-    paddingBottom: 4,
   },
   networkIcon: {
     color: COLORS.WHITE,
@@ -81,6 +80,7 @@ export const TextStyles = StyleSheet.create({
     marginTop: scale(8)
   },
   networkStatus: {
+    color: COLORS.BLUE,
     marginHorizontal: scale(6),
     backgroundColor: "transparent",
     textAlign: "center"
