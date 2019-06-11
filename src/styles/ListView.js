@@ -176,9 +176,6 @@ export const ListQuickActions = StyleSheet.create({
 		justifyContent: 'center',
 		alignSelf: 'flex-end',
 		height: '100%',
-		borderRadius: 4,
-		margin: 8,
-		marginRight:20
 	},
 	textAction: {
 		textAlign: 'center',
