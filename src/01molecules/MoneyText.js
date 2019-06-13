@@ -1,18 +1,24 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
 import {TextStyles} from '../styles/Base';
+import {moderateScale} from "../styles/Scaling";
 import PropTypes from "prop-types";
-import {Icon} from "react-native-elements";
+import SimpleText from '../00atoms/SimpleText';
+import RubleIcon from '../00atoms/RubleIcon';
 
 export default class MoneyText extends React.Component {
   static propTypes = {
     moneySumm: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.number
-    ])
+    ]),
+    rubleSize: PropTypes.number,
+    centSize: PropTypes.number
   };
   static defaultProps = {
-    moneySumm: null
+    moneySumm: null,
+    rubleSize: 24,
+    centSize: 14
   };
 
   formatCurrencyDot = (value) => {
@@ -49,24 +55,14 @@ export default class MoneyText extends React.Component {
           accessible={false}
           style={TextStyles.moneyText}
         >
-            <Text
-              allowFontScaling={false}
-              style={TextStyles.moneyRubles}
-            >
-                {rubles}
-                {","}
-            </Text>
-            <Text
-              allowFontScaling={false}
-              style={TextStyles.moneyCents}
-            >
-                {currencyText[1]}
-            </Text>
-            <Icon
-              iconStyle={TextStyles.moneyIcon}
-              name="ruble"
-              type="font-awesome"
-            />
+          <SimpleText style={[TextStyles.moneyRubles, {fontSize: moderateScale(this.props.rubleSize)}]}>
+            {rubles}
+            {","}
+          </SimpleText>
+          <SimpleText style={[TextStyles.moneyCents, {fontSize: moderateScale(this.props.centSize)}]}>
+            {currencyText[1]}
+          </SimpleText>
+            <RubleIcon rubleSize={this.props.rubleSize}/>
         </View>
     );
   }

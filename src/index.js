@@ -9,7 +9,8 @@ import Button, {BUTTON_TYPES} from './01molecules/Button';
 import PairCircles from './02organisms/PairCircles';
 import Search from './01molecules/Search';
 import MenuItem from './01molecules/MenuItem';
-import MoneyText from './00atoms/MoneyText';
+import MoneyText from './01molecules/MoneyText';
+import RubleIcon from './00atoms/RubleIcon';
 
 export {
     COLORS,
@@ -24,5 +25,6 @@ export {
     PairCircles,
     Search,
     MenuItem,
-    MoneyText
+    MoneyText,
+    RubleIcon
 };

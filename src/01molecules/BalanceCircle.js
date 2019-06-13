@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Text, TouchableOpacity, View, Platform} from 'react-native';
 import PropTypes from 'prop-types';
 import {CircleStyles, TextStyles} from '../styles/Base';
-import MoneyText from '../00atoms/MoneyText';
+import MoneyText from './MoneyText';
 import {moderateScale, baseRadius, getCircleDiagonal} from "../styles/Scaling";
 
 export default class BalanceCircle extends React.Component {
