@@ -1,45 +1,37 @@
 import * as React from 'react';
-import {Text, View, TouchableOpacity, Alert, Platform} from 'react-native';
+import {Text, View, TouchableOpacity, Platform} from 'react-native';
 import PropTypes from 'prop-types';
-import {CircleStyles, TextStyles, COLORS, CIRCLE_COLOR} from '../styles/Base';
-import {Icon} from "react-native-elements";
+import {CircleStyles, TextStyles, CIRCLE_COLOR} from '../styles/Base';
 import {moderateScale, scale, baseRadius, getCircleDiagonal} from "../styles/Scaling";
+import NetworkStatusAlert from "./NetworkStatusAlert";
+import NetworkStatusIcon from "../00atoms/NetworkStatusIcon";
 
 const NetworkStatusObject = {
   ok: {
-    fontColor: COLORS.WHITE,
     backgroundColor: CIRCLE_COLOR.NETWORK_GREEN
   },
   ok_needpay: {
-    fontColor: CIRCLE_COLOR.NETWORK_TEXT_BLUE,
     backgroundColor: CIRCLE_COLOR.NETWORK_YELLOW
   },
   damage: {
-    fontColor: COLORS.WHITE,
     backgroundColor: CIRCLE_COLOR.NETWORK_RED
   },
   block: {
-    fontColor: COLORS.WHITE,
     backgroundColor: CIRCLE_COLOR.NETWORK_RED
   },
   blocked: {
-    fontColor: CIRCLE_COLOR.NETWORK_TEXT_BLUE,
     backgroundColor: CIRCLE_COLOR.NETWORK_YELLOW
   },
   fixorder: {
-    fontColor: CIRCLE_COLOR.NETWORK_TEXT_BLUE,
     backgroundColor: CIRCLE_COLOR.NETWORK_YELLOW
   },
   svcorder: {
-    fontColor: COLORS.WHITE,
     backgroundColor: CIRCLE_COLOR.NETWORK_YELLOW
   },
   job_ticket: {
-    fontColor: CIRCLE_COLOR.NETWORK_TEXT_BLUE,
     backgroundColor: CIRCLE_COLOR.NETWORK_YELLOW
   },
   default: {
-    fontColor: COLORS.WHITE,
     backgroundColor: CIRCLE_COLOR.NETWORK_GREEN
   }
 };
@@ -57,6 +49,8 @@ export default class NetworkCircle extends React.Component {
     this.state = {
       status: null,
       title: "",
+      showModal: false,
+      statusInfo: null,
     };
   }
 
@@ -69,6 +63,7 @@ export default class NetworkCircle extends React.Component {
 
   componentDidMount() {
     this.props.getStatus();
+
   }
 
   setNativeProps = (nativeProps) => {
@@ -81,13 +76,28 @@ export default class NetworkCircle extends React.Component {
     }
   }
 
-  handleOpenModal = () => {
-    if (this.props.serviceStatus && this.props.serviceStatus.description != null) {
-      Alert.alert(
-        this.props.serviceStatus.title ? this.props.serviceStatus.title : "Статус сети",
-        this.props.serviceStatus.description
-      );
+  getStatusInfo = () => {
+    let info = NetworkStatusObject.default;
+
+    if (this.props.serviceStatus !== null) {
+      for (let key in NetworkStatusObject) {
+        if (key === this.props.serviceStatus.status) {
+          info = NetworkStatusObject[key];
+          info.description = this.props.serviceStatus.description;
+          info.status = this.props.serviceStatus.status;
+        }
+      }
     }
+
+    return info;
+  };
+
+  handleOpenModal = () => {
+    this.setState({showModal: true});
+  };
+
+  handlePressCancel = () => {
+    this.setState({showModal: false});
   };
 
   /**
@@ -96,30 +106,22 @@ export default class NetworkCircle extends React.Component {
    * @returns {number}
    */
   getFontSizeStatus = title => {
-    let longestWord = title.split(' ').sort((a, b) => { return b.length - a.length; });
+    let longestWord = title.split(' ').sort((a, b) => {
+      return b.length - a.length;
+    });
     return longestWord[0].length > 10 ? 9 : 13;
   };
 
   render() {
-    let status = this.state.status,
-      title = this.state.title;
+    let title = this.state.title;
     if (this.props.serviceStatus !== null) {
-      status = this.props.serviceStatus.status;
       title = this.props.serviceStatus.title;
     }
-
-    let obj = NetworkStatusObject.default;
-
-    for (let key in NetworkStatusObject) {
-      if (key === status) {
-        obj = NetworkStatusObject[key];
-      }
-    }
-
-    let firstWord = title.split(" ")[0],
-      secondWords = title.slice(firstWord.length + 1),
-      fontSize = this.getFontSizeStatus(title),
-      diagonal = baseRadius * moderateScale(0.3);
+    let statusInfo = this.getStatusInfo(),
+        firstWord = title.split(" ")[0],
+        secondWords = title.slice(firstWord.length + 1),
+        fontSize = this.getFontSizeStatus(title),
+        diagonal = baseRadius * moderateScale(0.3);
     return (
       <View>
         {Platform.OS === 'android' &&
@@ -136,25 +138,31 @@ export default class NetworkCircle extends React.Component {
             getCircleDiagonal(diagonal),
             CircleStyles.networkCircle,
             {
-              backgroundColor: obj.backgroundColor,
+              backgroundColor: statusInfo.backgroundColor,
               zIndex: -10
             },
           ]}
-            onPress={this.handleOpenModal}>
+          onPress={this.handleOpenModal}
+        >
+          {
+            this.state.showModal ?
+              <NetworkStatusAlert
+                  statusInfo={this.getStatusInfo()}
+                  onPressCancel={this.handlePressCancel}
+              /> : <View/>
+          }
           <View style={{alignItems: "center", flex: 1}}>
-            <Icon
-              iconStyle={TextStyles.networkIcon}
-              color="white"
-              name="flash-circle"
-              size={scale(20)}
-              type="material-community"
-            />
-            <Text
-              allowFontScaling={false}
-              style={TextStyles.networkTitle}
-            >
-              {this.props.title.toUpperCase()}
-            </Text>
+            <View style={{paddingTop: scale(5), paddingBottom: scale(5), alignItems: "center"}}>
+              <NetworkStatusIcon
+                size={scale(18)}
+              />
+              <Text
+                allowFontScaling={false}
+                style={TextStyles.networkTitle}
+              >
+                {this.props.title.toUpperCase()}
+              </Text>
+            </View>
             <View style={{
               justifyContent: "center",
               alignItems: "center",
@@ -165,12 +173,7 @@ export default class NetworkCircle extends React.Component {
                 allowFontScaling={false}
                 ellipsizeMode={"tail"}
                 numberOfLines={1}
-                style={[TextStyles.networkStatus,
-                  {
-                    color: obj.fontColor,
-                    fontSize: scale(fontSize)
-                  }
-                ]}
+                style={[TextStyles.networkStatus, {fontSize: scale(fontSize)}]}
               >
                 {firstWord === "" ? " " : firstWord.toUpperCase()}
               </Text>
@@ -178,12 +181,7 @@ export default class NetworkCircle extends React.Component {
                 allowFontScaling={false}
                 ellipsizeMode={"tail"}
                 numberOfLines={1}
-                style={[TextStyles.networkStatus,
-                  {
-                    color: obj.fontColor,
-                    fontSize: scale(fontSize)
-                  }
-                ]}
+                style={[TextStyles.networkStatus, {fontSize: scale(fontSize)}]}
               >
                 {secondWords === "" ? " " : secondWords.toUpperCase()}
               </Text>
