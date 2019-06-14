@@ -119,7 +119,8 @@ export const ButtonStyles = StyleSheet.create({
     paddingLeft: 12
   },
   disabled: {
-    backgroundColor: COLORS.MAIN_GRAY
+    backgroundColor: 'transparent',
+    borderColor: COLORS.DEFAULT_BLUE_LIGHT
   },
   blue: {
     backgroundColor: COLORS.DEFAULT_BLUE
@@ -152,7 +153,8 @@ export const ButtonStyles = StyleSheet.create({
 
 export const ButtonTextStyles = StyleSheet.create({
   disabled: {
-    color: COLORS.WHITE,
+    color: COLORS.DEFAULT_BLUE_LIGHT,
+    fontWeight: "bold",
     textAlign: 'center'
   },
   blue: {

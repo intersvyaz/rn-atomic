@@ -19,16 +19,17 @@ export default class Button extends React.Component {
   static propTypes = {
     accessibilityLabel: PropTypes.string,
     title: PropTypes.string,
+    titleSize: PropTypes.number,
     style: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
     type: PropTypes.oneOf(BUTTON_TYPES_ARRAY),
-    enable: PropTypes.bool,
+    disabled: PropTypes.bool,
     renderIcon: PropTypes.func,
     renderTitle: PropTypes.func,
     onPress: PropTypes.func
   };
 
   static defaultProps = {
-    enable: true,
+    disabled: false,
     onPress: () => {},
     type: BUTTON_TYPES.ORANGE
   };
@@ -62,14 +63,6 @@ export default class Button extends React.Component {
     }
   };
 
-  handleOnPress = () => {
-    if (!this.props.enable) {
-      return false;
-    } else {
-      this.props.onPress();
-    }
-  };
-
   getButtonStyle = () => {
     let styleName = this.getStyleName();
     if (this.props.renderIcon && this.props.type !== BUTTON_TYPES.TEXT) {
@@ -82,12 +75,14 @@ export default class Button extends React.Component {
   getTitleStyle = () => {
     let styleName = this.getStyleName();
 
+    if (this.props.titleSize)
+      return [ButtonTextStyles[styleName], {fontSize: this.props.titleSize}];
     return ButtonTextStyles[styleName];
   };
 
   getStyleName = () => {
     let styleName = 'base';
-    if (!this.props.enable) {
+    if (this.props.disabled) {
       switch (this.props.type) {
         case BUTTON_TYPES.TEXT: styleName = 'textDisabled';
         case BUTTON_TYPES.WHITE: styleName = 'whiteDisabled';
@@ -108,7 +103,8 @@ export default class Button extends React.Component {
     return (
       <TouchableOpacity
         activeOpacity={0.5}
-        onPress={this.handleOnPress}
+        disabled={this.props.disabled}
+        onPress={() => this.props.onPress()}
         style={[ButtonStyles.base, this.props.style, style]}
       >
         <View accessibilityLabel={this.props.accessibilityLabel}>
