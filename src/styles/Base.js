@@ -52,19 +52,16 @@ export const TextStyles = StyleSheet.create({
   },
   moneyRubles: {
     fontFamily: "Arial",
-    color: COLORS.WHITE,
     fontWeight: "bold",
   },
   moneyCents: {
     fontFamily: "Arial",
-    color: COLORS.WHITE,
     marginLeft: scale(3),
     marginBottom: scale(3),
     marginRight: scale(6),
     fontWeight: "bold",
   },
   moneyIcon: {
-    color: COLORS.WHITE,
     marginBottom: scale(3),
   },
   networkTitle: {
